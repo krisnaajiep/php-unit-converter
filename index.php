@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
         <form action="" method="post">
           <div class="form-input">
             <label for="value">Enter the length to convert</label>
-            <input type="text" name="value" id="value" <?php if (isset($error['value'])): ?> style="border-color: red;" <?php endif; ?> value="<?= isset($oldData['value']) ? $oldData['value'] : ''; ?>">
+            <input type="number" name="value" id="value" <?php if (isset($error['value'])): ?> style="border-color: red;" <?php endif; ?> value="<?= isset($oldData['value']) ? $oldData['value'] : ''; ?>">
             <?php if (isset($error['value'])): ?>
               <p style="color: red; font-size:medium; margin-top:5px"><?= $error['value']; ?></p>
             <?php endif; ?>
