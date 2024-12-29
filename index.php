@@ -8,9 +8,12 @@
 </head>
 
 <body>
+  <!-- Header Section -->
   <header>
     <h1>Unit Converter</h1>
   </header>
+
+  <!-- Navigation Section -->
   <nav>
     <ul>
       <li><a href="#">Length</a></li>
@@ -18,6 +21,8 @@
       <li><a href="#">Temperature</a></li>
     </ul>
   </nav>
+
+  <!-- Form Section -->
   <section class="form">
     <form action="" method="post">
       <div class="form-input">
@@ -39,6 +44,8 @@
       <button type="submit">Convert</button>
     </form>
   </section>
+
+  <!-- Result Section -->
   <section class="result">
     <h3>Result of your calculation</h3>
     <h2>20 ft = 609cm</h2>
