@@ -1,4 +1,4 @@
-header h1, nav, section {
+header h1, nav {
   text-align: center;
 }
 
@@ -9,4 +9,19 @@ nav li {
 
 nav ul {
   padding-left: 0;
+}
+
+section.form, section.result {
+  width: 20vw;
+  margin: 30px auto;
+}
+
+.form-input {
+  font-size: large;
+  margin-bottom: 20px;
+}
+
+.form-input label {
+  display: block;
+  margin-bottom: 10px;
 }
