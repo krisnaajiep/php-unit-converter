@@ -40,3 +40,10 @@ section.form, section.result {
   font-size: medium;
   background-color: #fff;
 }
+
+button {
+  margin-top: 10px;
+  width: 100px;
+  height: 35px;
+  font-size: medium;
+}
