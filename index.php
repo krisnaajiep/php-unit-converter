@@ -18,6 +18,27 @@
       <li><a href="#">Temperature</a></li>
     </ul>
   </nav>
+  <section class="form">
+    <form action="" method="post">
+      <div class="form-input">
+        <label for="value">Enter the length to convert</label>
+        <input type="number" name="value" id="value">
+      </div>
+      <div class="form-input">
+        <label for="from">Unit to convert from</label>
+        <select name="from" id="from">
+          <option value="">Select unit</option>
+        </select>
+      </div>
+      <div class="form-input">
+        <label for="to">Unit to convert to</label>
+        <select name="to" id="to">
+          <option value="">Select unit</option>
+        </select>
+      </div>
+      <button type="submit">Convert</button>
+    </form>
+  </section>
 </body>
 
 </html>
