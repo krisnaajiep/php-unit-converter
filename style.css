@@ -47,3 +47,7 @@ button {
   height: 35px;
   font-size: medium;
 }
+
+section.result h3 {
+  margin-top: 0;
+}
