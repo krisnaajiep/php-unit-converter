@@ -39,6 +39,11 @@
       <button type="submit">Convert</button>
     </form>
   </section>
+  <section class="result">
+    <h3>Result of your calculation</h3>
+    <h2>20 ft = 609cm</h2>
+    <button>Reset</button>
+  </section>
 </body>
 
 </html>
