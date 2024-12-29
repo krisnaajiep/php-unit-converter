@@ -6,6 +6,8 @@
   <title>Unit Converter</title>
 </head>
 <body>
-  
+  <header>
+    <h1>Unit Converter</h1>
+  </header>
 </body>
 </html>
