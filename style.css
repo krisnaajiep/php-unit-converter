@@ -42,6 +42,7 @@ section.form, section.result {
 .form-input input {
   height: 25px;
   width: 98%;
+  font-size: medium;
 }
 
 .form-input select {
