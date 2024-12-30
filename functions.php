@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Returns an array of units based on the selected category (length, weight, or temperature).
+ *
+ * @return array array List of units with their conversion factors and/or symbols.
+ */
 function setUnits(): array
 {
   $lengths = [
@@ -34,6 +39,17 @@ function setUnits(): array
       : $temperatures);
 }
 
+/**
+ * Converts a given length or weigth value from one unit to another.
+ *
+ * @param array $units The units array, containing conversion factors and symbols.
+ * @param integer $value The numeric value to be converted.
+ * @param string $from The unit to convert from.
+ * @param string $to The unit to convert to.
+ * @return array An associative array containing:
+ *               - 'from': The original value with its unit symbol.
+ *               - 'to': The converted value with its unit symbol.
+ */
 function convertLengthOrWeight(array $units, int $value, string $from, string $to): array
 {
   $result = ($value * $units[$from]['convert']) / $units[$to]['convert'];
@@ -46,6 +62,17 @@ function convertLengthOrWeight(array $units, int $value, string $from, string $t
   ];
 }
 
+/**
+ * Converts a given temperature value from one unit to another.
+ *
+ * @param array $units The units array, containing conversion factors and symbols.
+ * @param integer $value The numeric value to be converted.
+ * @param string $from The unit to convert from.
+ * @param string $to The unit to convert to.
+ * @return array An associative array containing:
+ *               - 'from': The original value with its unit symbol.
+ *               - 'to': The converted value with its unit symbol.
+ */
 function convertTemperature(array $units, int $value, string $from, string $to): array
 {
   switch ($from) {
