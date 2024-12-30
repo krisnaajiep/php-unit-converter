@@ -4,6 +4,12 @@ require_once 'functions.php';
 
 $units = setUnits();
 
+if (isset($_POST['convert'])) {
+  $result = (array_key_exists('celcius', $units))
+    ? convertTemperature($units, $_POST['value'], $_POST['from'], $_POST['to'])
+    : convertLengthOrWeight($units, $_POST['value'], $_POST['from'], $_POST['to']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +42,7 @@ $units = setUnits();
     <section class="form">
       <form action="" method="post">
         <div class="form-input">
-          <label for="value">Enter the length to convert</label>
+          <label for="value">Enter the <?= $_GET['unit'] ?> to convert</label>
           <input type="number" name="value" id="value">
         </div>
         <div class="form-input">
@@ -65,7 +71,7 @@ $units = setUnits();
     <!-- Result Section -->
     <section class="result">
       <h3>Result of your calculation</h3>
-      <h2>20 ft = 609cm</h2>
+      <h2><?= $result['from']; ?> = <?= $result['to']; ?></h2>
       <form action="" method="post">
         <button>Reset</button>
       </form>
