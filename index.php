@@ -42,12 +42,18 @@ $units = setUnits();
         <label for="from">Unit to convert from</label>
         <select name="from" id="from">
           <option value="">Select unit</option>
+          <?php foreach ($units as $key => $value): ?>
+            <option value="<?= $key; ?>"><?= $key; ?></option>
+          <?php endforeach; ?>
         </select>
       </div>
       <div class="form-input">
         <label for="to">Unit to convert to</label>
         <select name="to" id="to">
           <option value="">Select unit</option>
+          <?php foreach ($units as $key => $value): ?>
+            <option value="<?= $key; ?>"><?= $key; ?></option>
+          <?php endforeach; ?>
         </select>
       </div>
       <button type="submit" name="convert">Convert</button>
