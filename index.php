@@ -1,3 +1,11 @@
+<?php
+
+require_once 'functions.php';
+
+$units = setUnits();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

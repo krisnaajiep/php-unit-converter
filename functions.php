@@ -1,0 +1,35 @@
+<?php
+
+function setUnits(): array
+{
+  $lengths = [
+    'milimeter' => ['convert' => 0.000001, 'symbol' => 'mm',],
+    'centimeter' => ['convert' => 0.00001, 'symbol' => 'cm',],
+    'meter' => ['convert' => 0.001, 'symbol' => 'm'],
+    'kilometer' => ['convert' => 1, 'symbol' => 'km'],
+    'inch' => ['convert' => 0.0000254, 'symbol' => ' in'],
+    'foot' =>  ['convert' => 0.0003048, 'symbol' => ' ft'],
+    'yard' => ['convert' => 0.0009144, 'symbol' => ' yd'],
+    'mile' => ['convert' => 1.60934, 'symbol' => ' mi'],
+  ];
+
+  $weights = [
+    'miligram' => ['convert' => 0.000001, 'symbol' => 'mg'],
+    'gram' => ['convert' => 0.001, 'symbol' => 'g'],
+    'kilogram' => ['convert' => 1, 'symbol' => 'kg'],
+    'ounce' => ['convert' => 0.0283495, 'symbol' => 'oz'],
+    'pound' => ['convert' => 0.453592, 'symbol' => 'lb']
+  ];
+
+  $temperatures = [
+    'celcius' => ['symbol' => '°C'],
+    'fahrenheit' => ['symbol' => '°F'],
+    'kelvin' => ['symbol' => 'K'],
+  ];
+
+  return !isset($_GET['unit']) || $_GET['unit'] == 'length'
+    ? $lengths
+    : ($_GET['unit'] == 'weight'
+      ? $weights
+      : $temperatures);
+}
