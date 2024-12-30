@@ -4,6 +4,7 @@ require_once 'functions.php';
 
 $units = setUnits();
 $errors = [];
+$oldData = [];
 
 if (isset($_POST['convert'])) {
   if (empty($_POST['value']))
@@ -17,6 +18,12 @@ if (isset($_POST['convert'])) {
 
   if (empty($_POST['to']))
     $errors['to'] = 'Please select unit to convert to';
+
+  if (!empty($errors)) {
+    $oldData['value'] = $_POST['value'];
+    $oldData['from'] = $_POST['from'];
+    $oldData['to'] = $_POST['to'];
+  }
 
   if (empty($errors))
     $result = (array_key_exists('celcius', $units))
@@ -57,7 +64,7 @@ if (isset($_POST['convert'])) {
       <form action="" method="post">
         <div class="form-input">
           <label for="value">Enter the <?= $_GET['unit'] ?> to convert</label>
-          <input type="number" name="value" id="value" <?php if (isset($errors['value'])): ?> style="border-color: red;" <?php endif; ?>>
+          <input type="number" name="value" id="value" <?php if (isset($errors['value'])): ?> style="border-color: red;" <?php endif; ?> value="<?= isset($oldData['value']) ? $oldData['value'] : ''; ?>">
           <?php if (isset($errors['value'])): ?>
             <p style="color: red; font-size:small; margin-top:5px"><?= $errors['value']; ?></p>
           <?php endif; ?>
@@ -67,7 +74,7 @@ if (isset($_POST['convert'])) {
           <select name="from" id="from" <?php if (isset($errors['from'])): ?> style="border-color: red;" <?php endif; ?>>
             <option value="">Select unit</option>
             <?php foreach ($units as $key => $value): ?>
-              <option value="<?= $key; ?>"><?= $key; ?></option>
+              <option value="<?= $key; ?>" <?= isset($oldData['from']) && $oldData['from'] == $key ? 'selected' : ''; ?>><?= $key; ?></option>
             <?php endforeach; ?>
           </select>
           <?php if (isset($errors['from'])): ?>
@@ -79,7 +86,7 @@ if (isset($_POST['convert'])) {
           <select name="to" id="to" <?php if (isset($errors['to'])): ?> style="border-color: red;" <?php endif; ?>>
             <option value="">Select unit</option>
             <?php foreach ($units as $key => $value): ?>
-              <option value="<?= $key; ?>"><?= $key; ?></option>
+              <option value="<?= $key; ?>" <?= isset($oldData['to']) && $oldData['to'] == $key ? 'selected' : ''; ?>><?= $key; ?></option>
             <?php endforeach; ?>
           </select>
           <?php if (isset($errors['to'])): ?>
