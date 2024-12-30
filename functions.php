@@ -33,3 +33,15 @@ function setUnits(): array
       ? $weights
       : $temperatures);
 }
+
+function convertLengthOrWeight(array $units, int $value, string $from, string $to): array
+{
+  $result = ($value * $units[$from]['convert']) / $units[$to]['convert'];
+
+  if (strlen($result) > 8) $result = round($result, 4);
+
+  return [
+    'from' => $value . $units[$from]['symbol'],
+    'to' => $result . $units[$to]['symbol'],
+  ];
+}
