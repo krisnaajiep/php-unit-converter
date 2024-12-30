@@ -66,7 +66,9 @@ $units = setUnits();
     <section class="result">
       <h3>Result of your calculation</h3>
       <h2>20 ft = 609cm</h2>
-      <button>Reset</button>
+      <form action="" method="post">
+        <button>Reset</button>
+      </form>
     </section>
   <?php endif; ?>
 
