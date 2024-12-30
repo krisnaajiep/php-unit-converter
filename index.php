@@ -17,9 +17,9 @@
   <!-- Navigation Section -->
   <nav>
     <ul>
-      <li><a href="#">Length</a></li>
-      <li><a href="#">Weight</a></li>
-      <li><a href="#">Temperature</a></li>
+      <li><a href="index.php?unit=length" <?php if (!isset($_GET['unit']) || $_GET['unit'] == 'length'): ?> style="color: blue; text-decoration:underline" <?php endif; ?>>Length</a></li>
+      <li><a href="index.php?unit=weight" <?php if (isset($_GET['unit']) && $_GET['unit'] == 'weight'): ?> style="color: blue; text-decoration:underline" <?php endif; ?>>Weight</a></li>
+      <li><a href="index.php?unit=temperature" <?php if (isset($_GET['unit']) && $_GET['unit'] == 'temperature'): ?> style="color: blue; text-decoration:underline" <?php endif; ?>>Temperature</a></li>
     </ul>
   </nav>
 
@@ -42,7 +42,7 @@
           <option value="">Select unit</option>
         </select>
       </div>
-      <button type="submit">Convert</button>
+      <button type="submit" name="convert">Convert</button>
     </form>
   </section>
 
