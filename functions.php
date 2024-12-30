@@ -45,3 +45,33 @@ function convertLengthOrWeight(array $units, int $value, string $from, string $t
     'to' => $result . $units[$to]['symbol'],
   ];
 }
+
+function convertTemperature(array $units, int $value, string $from, string $to): array
+{
+  switch ($from) {
+    case 'celcius':
+      $result = $to == 'fahrenheit'
+        ? $value * 9 / 5 + 32
+        : $value + 273.15;
+      break;
+
+    case 'fahrenheit':
+      $result = $to == 'celcius'
+        ? ($value - 32) * 5 / 9
+        : ($value - 32) * 5 / 9 + 273.15;
+      break;
+
+    case 'kelvin':
+      $result = $to == 'celcius'
+        ? $value - 273.15
+        : ($value - 273.15) * 9 / 5 + 32;
+      break;
+  }
+
+  if (strlen($result) > 8) $result = round($result, 4);
+
+  return [
+    'from' => $value . $units[$from]['symbol'],
+    'to' => $result . $units[$to]['symbol'],
+  ];
+}
