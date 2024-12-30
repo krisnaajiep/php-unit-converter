@@ -3,11 +3,25 @@
 require_once 'functions.php';
 
 $units = setUnits();
+$errors = [];
 
 if (isset($_POST['convert'])) {
-  $result = (array_key_exists('celcius', $units))
-    ? convertTemperature($units, $_POST['value'], $_POST['from'], $_POST['to'])
-    : convertLengthOrWeight($units, $_POST['value'], $_POST['from'], $_POST['to']);
+  if (empty($_POST['value']))
+    $errors['value'] = 'Please enter the ' . $_GET['unit'] . ' to convert';
+
+  if (!empty($_POST['value']) && !is_numeric($_POST['value']))
+    $errors['value'] = 'Value must be a number';
+
+  if (empty($_POST['from']))
+    $errors['from'] = 'Please select unit to convert from';
+
+  if (empty($_POST['to']))
+    $errors['to'] = 'Please select unit to convert to';
+
+  if (empty($errors))
+    $result = (array_key_exists('celcius', $units))
+      ? convertTemperature($units, $_POST['value'], $_POST['from'], $_POST['to'])
+      : convertLengthOrWeight($units, $_POST['value'], $_POST['from'], $_POST['to']);
 }
 
 ?>
@@ -37,31 +51,40 @@ if (isset($_POST['convert'])) {
     </ul>
   </nav>
 
-  <?php if (!isset($_POST['convert'])): ?>
+  <?php if (!isset($_POST['convert']) || !empty($errors)): ?>
     <!-- Form Section -->
     <section class="form">
       <form action="" method="post">
         <div class="form-input">
           <label for="value">Enter the <?= $_GET['unit'] ?> to convert</label>
-          <input type="number" name="value" id="value">
+          <input type="number" name="value" id="value" <?php if (isset($errors['value'])): ?> style="border-color: red;" <?php endif; ?>>
+          <?php if (isset($errors['value'])): ?>
+            <p style="color: red; font-size:small; margin-top:5px"><?= $errors['value']; ?></p>
+          <?php endif; ?>
         </div>
         <div class="form-input">
           <label for="from">Unit to convert from</label>
-          <select name="from" id="from">
+          <select name="from" id="from" <?php if (isset($errors['from'])): ?> style="border-color: red;" <?php endif; ?>>
             <option value="">Select unit</option>
             <?php foreach ($units as $key => $value): ?>
               <option value="<?= $key; ?>"><?= $key; ?></option>
             <?php endforeach; ?>
           </select>
+          <?php if (isset($errors['from'])): ?>
+            <p style="color: red; font-size:small; margin-top:5px"><?= $errors['from']; ?></p>
+          <?php endif; ?>
         </div>
         <div class="form-input">
           <label for="to">Unit to convert to</label>
-          <select name="to" id="to">
+          <select name="to" id="to" <?php if (isset($errors['to'])): ?> style="border-color: red;" <?php endif; ?>>
             <option value="">Select unit</option>
             <?php foreach ($units as $key => $value): ?>
               <option value="<?= $key; ?>"><?= $key; ?></option>
             <?php endforeach; ?>
           </select>
+          <?php if (isset($errors['to'])): ?>
+            <p style="color: red; font-size:small; margin-top:5px"><?= $errors['to']; ?></p>
+          <?php endif; ?>
         </div>
         <button type="submit" name="convert">Convert</button>
       </form>
