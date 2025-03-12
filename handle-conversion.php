@@ -3,6 +3,10 @@
 // Convert the value if the form is submitted
 if (isset($_POST['convert'])) {
 
+  // Validate the CSRF token
+  if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token']))
+    die('Invalid CSRF token');
+
   // Sanitize the form data
   $value = htmlspecialchars($_POST['value'], ENT_QUOTES, 'UTF-8');
   $from = htmlspecialchars($_POST['from'], ENT_QUOTES, 'UTF-8');
