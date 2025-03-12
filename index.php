@@ -33,7 +33,7 @@
           <label for="value">Enter the <?= $_GET['unit'] ?? 'length' ?> to convert</label>
           <input type="number" name="value" id="value" <?php if (isset($errors['value'])): ?> style="border-color: red;" <?php endif; ?> value="<?= isset($oldData['value']) ? $oldData['value'] : ''; ?>">
           <?php if (isset($errors['value'])): ?>
-            <p style="color: red; font-size:small; margin-top:5px"><?= $errors['value']; ?></p>
+            <p class="error"><?= $errors['value']; ?></p>
           <?php endif; ?>
         </div>
         <div class="form-input">
@@ -45,7 +45,7 @@
             <?php endforeach; ?>
           </select>
           <?php if (isset($errors['from'])): ?>
-            <p style="color: red; font-size:small; margin-top:5px"><?= $errors['from']; ?></p>
+            <p class="error"><?= $errors['from']; ?></p>
           <?php endif; ?>
         </div>
         <div class="form-input">
@@ -57,7 +57,7 @@
             <?php endforeach; ?>
           </select>
           <?php if (isset($errors['to'])): ?>
-            <p style="color: red; font-size:small; margin-top:5px"><?= $errors['to']; ?></p>
+            <p class="error"><?= $errors['to']; ?></p>
           <?php endif; ?>
         </div>
         <button type="submit" name="convert">Convert</button>

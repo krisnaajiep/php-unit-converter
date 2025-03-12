@@ -1,4 +1,5 @@
-header h1, nav {
+header h1,
+nav {
   text-align: center;
 }
 
@@ -21,7 +22,8 @@ nav ul {
   padding-left: 0;
 }
 
-section.form, section.result {
+section.form,
+section.result {
   width: 30vw;
   margin: 30px auto;
   border: 1px solid black;
@@ -50,6 +52,12 @@ section.form, section.result {
   width: 100%;
   font-size: medium;
   background-color: #fff;
+}
+
+.form-input p.error {
+  color: red;
+  font-size: medium;
+  margin-top: 5px;
 }
 
 button {
