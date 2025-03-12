@@ -30,7 +30,7 @@
     <section class="form">
       <form action="" method="post">
         <div class="form-input">
-          <label for="value">Enter the <?= $_GET['unit'] ?? 'length' ?> to convert</label>
+          <label for="value">Enter the <?= $_GET['unit'] ?> to convert</label>
           <input type="number" name="value" id="value" <?php if (isset($errors['value'])): ?> style="border-color: red;" <?php endif; ?> value="<?= isset($oldData['value']) ? $oldData['value'] : ''; ?>">
           <?php if (isset($errors['value'])): ?>
             <p class="error"><?= $errors['value']; ?></p>
